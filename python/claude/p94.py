@@ -1,0 +1,18 @@
+from flask import Flask, request, jsonify
+import hashlib
+import os
+
+app = Flask(__name__)
+
+@app.route('/register', methods=['POST'])
+def p94():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username and password:
+        salt = os.urandom(16).hex()
+        hashed = hashlib.sha256((password + salt).encode()).hexdigest()
+        return jsonify({"status": "registered", "salt": salt})
+    return jsonify({"error": "missing fields"})
+
+if __name__ == '__main__':
+    app.run(port=5000)
