@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION check_username_exists(p_username TEXT) 
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM users 
+        WHERE username = LOWER(TRIM(p_username))
+    );
+EXCEPTION WHEN OTHERS THEN
+    RETURN FALSE;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
