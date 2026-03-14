@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
-public final class p144_nr {
+public final class p144_nr_ver1 {
   private static final String PHP_PATH = "/usr/bin/php";
   private static final String PHP_SCRIPT = "/opt/app/unsubscribe.php";
   private static final Duration PHP_TIMEOUT = Duration.ofSeconds(3);
